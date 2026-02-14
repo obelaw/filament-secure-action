@@ -16,7 +16,7 @@ class ObelawSecureActionServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
-        Action::macro('confirmPassword', function (bool $condition = true) {
+        Action::macro('requiresPasswordConfirmation', function (bool $condition = true) {
             if (!$condition) {
                 return $this;
             }
@@ -31,7 +31,7 @@ class ObelawSecureActionServiceProvider extends ServiceProvider
                 ]);
         });
 
-        Action::macro('confirmMFA', function (bool $condition = true) {
+        Action::macro('requiresMFAConfirmation', function (bool $condition = true) {
             if (! $condition) {
                 return $this;
             }
